@@ -11,6 +11,17 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
+    await queryInterface.bulkInsert('Companies', [{
+      name: "My super company",
+      operating_countries: 'Spain;USA;France',
+      created_at: new Date(),
+      updated_at: new Date()
+    }, {
+      name: "My super company 2",
+      operating_countries: 'Spain;USA;France',
+      created_at: new Date(),
+      updated_at: new Date()
+    }], {});
   },
 
   down: async (queryInterface, Sequelize) => {
@@ -20,5 +31,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
+    await queryInterface.bulkDelete('companies', null, {});
   }
 };
