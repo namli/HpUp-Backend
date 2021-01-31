@@ -14,13 +14,13 @@ module.exports = {
     await queryInterface.bulkInsert('Companies', [{
       name: "My super company",
       operating_countries: 'Spain;USA;France',
-      created_at: new Date(),
-      updated_at: new Date()
+      createdAt: new Date(),
+      updatedAt: new Date()
     }, {
       name: "My super company 2",
       operating_countries: 'Spain;USA;France',
-      created_at: new Date(),
-      updated_at: new Date()
+      createdAt: new Date(),
+      updatedAt: new Date()
     }], {});
   },
 
