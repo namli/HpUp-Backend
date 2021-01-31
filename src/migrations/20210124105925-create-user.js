@@ -25,7 +25,7 @@ module.exports = {
       about: {
         type: Sequelize.TEXT
       },
-      remaining_days: {
+      remainingDays: {
         type: Sequelize.INTEGER,
         allowNull: false
       },
@@ -34,11 +34,11 @@ module.exports = {
         values: ["employer", "employee"],
         allowNull: false
       },
-      created_at: {
+      createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updated_at: {
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
       }

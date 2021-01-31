@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.addColumn('users', 'requests_id',
+    return queryInterface.addColumn('users', 'requestId',
       {
         type: Sequelize.INTEGER,
         allowNull: true,
@@ -13,7 +13,7 @@ module.exports = {
       }
     )
       .then(() => {
-        return queryInterface.addColumn('users', 'companies_id',
+        return queryInterface.addColumn('users', 'companyId',
           {
             type: Sequelize.INTEGER,
             allowNull: false,
