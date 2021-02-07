@@ -29,13 +29,13 @@ module.exports = {
   down: async (queryInterface, Sequelize) => {
     return queryInterface.removeColumn(
       'users', // name of Source model
-      'requests_id' // key we want to remove
+      'requestId' // key we want to remove
     )
       .then(() => {
         // remove Payment hasOne Order
         return queryInterface.removeColumn(
           'users', // name of the Target model
-          'companies_id' // key we want to remove
+          'companyId' // key we want to remove
         );
       });
   }
