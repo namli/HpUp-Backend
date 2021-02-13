@@ -35,3 +35,6 @@ All Migration and Models generate by sequelize-cli
 
 **sequelize docs**
 [https://sequelize.org/v3/]
+
+Я туплю как обновить поле асоциаций для компании когда добавляю юзера.
+https://stackoverflow.com/questions/45845764/sequelize-typeerror-phone-setuser-is-not-a-function

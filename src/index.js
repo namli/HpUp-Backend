@@ -13,6 +13,8 @@ const session = require("express-session");
 //Import routes
 const authRouter = require("./routes/auth");
 const usersRouter = require("./routes/users");
+const companiesRouter = require("./routes/companies");
+const hollydayRouter = require("./routes/hollydayrequests");
 
 app.use(cors());
 app.use(bodyparser.urlencoded({
@@ -33,6 +35,8 @@ app.use(
 
 app.use("/", authRouter);
 app.use("/users", usersRouter);
+app.use("/companies", companiesRouter);
+app.use("/hollyday", hollydayRouter);
 
 app.get('/', (req, res) => {
   res.send('I\'m here');
