@@ -4,6 +4,7 @@ const bcryptSalt = 10;
 
 const models = require('../models');
 const User = models.user;
+const Request = models.request;
 
 const router = express.Router();
 
@@ -19,56 +20,89 @@ router.use(checkIfLoggedIn);
 
 // returns list of users
 router.get("/", (req, res, next) => {
-  User.findAll()
-    .then(users => {
-      res.status(200).json(users);
+  Request.findAll()
+    .then(requests => {
+      res.status(200).json(requests);
     })
     .catch(next);
 });
 
 // shows specific user, still to be populated with requests and companies
 router.get("/:id", (req, res, next) => {
-  User.findOne({ where: { id: req.params.id } })
-    .then(user => {
-      res.status(200).json(user);
+  Request.findOne({ where: { id: req.params.id } })
+    .then(request => {
+      res.status(200).json(request);
     })
     .catch(next);
+});
+
+// add request
+
+router.post("/", async (req, res, next) => {
+  const {
+    initDate,
+    endDate,
+    type,
+    status,
+    title,
+    description,
+    documentUrl,
+    userId,
+    companyId
+  } = req.body;
+
+  try {
+    const newReq = await Request.create({
+      initDate,
+      endDate,
+      type,
+      status,
+      title,
+      description,
+      documentUrl,
+      userId,
+      companyId
+    });
+
+    return res.json(newReq);
+  } catch (error) {
+    next(error);
+  }
+
+
 });
 
 // UPDATE user POST action
 router.patch("/:id", async (req, res, next) => {
   const {
-    username,
-    email,
-    password,
-    imgUrl,
-    basedCountry,
-    about,
-    remainingDays,
-    role,
-    requestId,
+    initDate,
+    endDate,
+    type,
+    status,
+    title,
+    description,
+    documentUrl,
+    userId,
     companyId
   } = req.body;
+
   const { id } = req.params;
   try {
-    const salt = bcrypt.genSaltSync(bcryptSalt);
-    const hashedPassword = bcrypt.hashSync(password, salt);
-    const editedUser = await User.update(
+    const editedReq = await Request.update(
       {
-        username: username,
-        email: email,
-        password: hashedPassword,
-        imgUrl: imgUrl,
-        basedCountry: basedCountry,
-        about: about,
-        remainingDays: remainingDays,
-        role: role,
-        requestId: requestId,
+        initDate: initDate,
+        endDate: endDate,
+        type: type,
+        status: status,
+        title: title,
+        description: description,
+        documentUrl: documentUrl,
+        userId: userId,
         companyId: companyId
       },
       { where: { id: id } }
     );
-    res.status(200).json(editedUser);
+    res.status(200).json(editedReq);
   } catch (error) {
     next(error);
   }
@@ -78,9 +112,9 @@ router.patch("/:id", async (req, res, next) => {
 router.delete("/:id", async (req, res, next) => {
   const { id } = req.params;
   try {
-    await User.destroy({ where: { id: id } });
-    const users = await User.findAll();
-    res.status(200).json(users);
+    await Request.destroy({ where: { id: id } });
+    const requests = await Request.findAll();
+    res.status(200).json(requests);
   } catch (error) {
     next(error);
   }

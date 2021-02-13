@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       user.belongsTo(models.company);
+      user.hasMany(models.request);
     }
   };
   user.init({
@@ -24,6 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     username: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
+    role: DataTypes.ENUM("employer", "employee"),
     remainingDays: DataTypes.INTEGER,
     companyId: DataTypes.INTEGER
   }, {

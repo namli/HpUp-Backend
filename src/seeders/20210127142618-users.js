@@ -5,7 +5,7 @@ const faker = require('faker');
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('Users', [{
+    await queryInterface.bulkInsert('users', [{
       username: 'jonh',
       email: faker.internet.email(),
       password: '$2b$10$wQEu819hbX1duHq4c0f81ORJZxAGWQxMYuvKHNYPpmEgTRN7qwmTi',
@@ -31,6 +31,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('Users', null, {});
+    await queryInterface.bulkDelete('users', null, {});
   }
 };
