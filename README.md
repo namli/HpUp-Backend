@@ -71,13 +71,6 @@ POST http://188.166.50.249/login
 LogOut \
 GET http://188.166.50.249/logout
 
-```
-{
-"username": "test",
-"password": "123123"
-}
-```
-
 **_ USERS _**
 
 Get all users \
