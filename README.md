@@ -36,5 +36,94 @@ All Migration and Models generate by sequelize-cli
 **sequelize docs**
 [https://sequelize.org/v3/]
 
+### Available endpoints
+
+**_ Auth _**
+
+Sign up \
+POST http://188.166.50.249/signup \
+
+```
+{
+"username": "test",
+"email": "test@test.test",
+"password": "123123",
+"imgUrl":"",
+"basedCountry":"USA",
+"about":"",
+"remainingDays":123,
+"role":"employer",
+"requests":"",
+"companyId":1
+}
+```
+
+Login \
+POST http://188.166.50.249/login \
+
+```
+{
+"username": "test",
+"password": "123123"
+}
+```
+
+LogOut \
+GET http://188.166.50.249/logout \
+
+```
+{
+"username": "test",
+"password": "123123"
+}
+```
+
+**_ USERS _**
+
+Get all users \
+GET http://188.166.50.249/users \
+
+Get User by id \
+GET http://188.166.50.249/users/(id) \
+
+Edit User \
+PATCH http://188.166.50.249/users/(id) \
+
+```
+{
+"username": "aga",
+"email": "test@test12.test",
+"password": "123123",
+"imgUrl":"",
+"basedCountry":"USA",
+"about":"",
+"remainingDays":123,
+"role":"employer",
+"requests":"",
+"companyId":1
+}
+```
+
+Delete User \
+DELETE http://188.166.50.249/users/(id) \
+
+**_ Companies _**
+
+Get all Companies \
+GET http://188.166.50.249/companies \
+
+Get Company by id \
+GET http://188.166.50.249/companies/(id) \
+
+Edit Company \
+PATCH http://188.166.50.249/companies/(id) \
+
+```
+
+```
+
+Delete Company \
+DELETE http://188.166.50.249/companies/(id) \
+
 Я туплю как обновить поле асоциаций для компании когда добавляю юзера.
 https://stackoverflow.com/questions/45845764/sequelize-typeerror-phone-setuser-is-not-a-function
