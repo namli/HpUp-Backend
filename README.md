@@ -41,7 +41,7 @@ All Migration and Models generate by sequelize-cli
 **_ Auth _**
 
 Sign up \
-POST http://188.166.50.249/signup \
+POST http://188.166.50.249/signup
 
 ```
 {
@@ -59,7 +59,7 @@ POST http://188.166.50.249/signup \
 ```
 
 Login \
-POST http://188.166.50.249/login \
+POST http://188.166.50.249/login
 
 ```
 {
@@ -69,7 +69,7 @@ POST http://188.166.50.249/login \
 ```
 
 LogOut \
-GET http://188.166.50.249/logout \
+GET http://188.166.50.249/logout
 
 ```
 {
@@ -81,13 +81,13 @@ GET http://188.166.50.249/logout \
 **_ USERS _**
 
 Get all users \
-GET http://188.166.50.249/users \
+GET http://188.166.50.249/users
 
 Get User by id \
-GET http://188.166.50.249/users/(id) \
+GET http://188.166.50.249/users/(id)
 
 Edit User \
-PATCH http://188.166.50.249/users/(id) \
+PATCH http://188.166.50.249/users/(id)
 
 ```
 {
@@ -105,25 +105,25 @@ PATCH http://188.166.50.249/users/(id) \
 ```
 
 Delete User \
-DELETE http://188.166.50.249/users/(id) \
+DELETE http://188.166.50.249/users/(id)
 
 **_ Companies _**
 
 Get all Companies \
-GET http://188.166.50.249/companies \
+GET http://188.166.50.249/companies
 
 Get Company by id \
-GET http://188.166.50.249/companies/(id) \
+GET http://188.166.50.249/companies/(id)
 
 Edit Company \
-PATCH http://188.166.50.249/companies/(id) \
+PATCH http://188.166.50.249/companies/(id)
 
 ```
 
 ```
 
 Delete Company \
-DELETE http://188.166.50.249/companies/(id) \
+DELETE http://188.166.50.249/companies/(id)
 
 Я туплю как обновить поле асоциаций для компании когда добавляю юзера.
 https://stackoverflow.com/questions/45845764/sequelize-typeerror-phone-setuser-is-not-a-function
