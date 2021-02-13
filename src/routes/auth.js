@@ -3,6 +3,9 @@ const bcrypt = require("bcrypt");
 
 const models = require('../models');
 const User = models.user;
+const Company = models.company;
+
+
 
 const bcryptSalt = 10;
 
@@ -40,6 +43,17 @@ router.post("/signup", async (req, res, next) => {
             requests,
             companyId
         });
+        // .then((user) => {
+        //     Company.findOne({ where: { id: user.companyId } }).then((company) => {
+        //         return company.addUser(user);
+        //     }).then((company) => {
+        //         return company.countUsers();
+        //     });
+
+        //     // const company = await user.setCompany(2);
+        //     // console.log(company);
+        //     //Company.addUser(user.id);
+        // });
         req.session.currentUser = newUser;
         return res.json(newUser);
     } catch (error) {

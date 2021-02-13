@@ -14,7 +14,7 @@ module.exports = {
       },
       endDate: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: true
       },
       type: {
         type: Sequelize.ENUM,
@@ -36,7 +36,7 @@ module.exports = {
       documentUrl: {
         type: Sequelize.STRING,
       },
-      author: {
+      userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -44,11 +44,11 @@ module.exports = {
           key: 'id'
         },
       },
-      destination: {
+      companyId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'users',
+          model: 'companies',
           key: 'id'
         },
       },

@@ -35,52 +35,66 @@ router.get("/:id", (req, res, next) => {
     .catch(next);
 });
 
-// UPDATE user POST action
-router.patch("/:id", async (req, res, next) => {
+// add company
+router.post("/", async (req, res, next) => {
   const {
-    username,
-    email,
-    password,
-    imgUrl,
-    basedCountry,
-    about,
-    remainingDays,
-    role,
-    requestId,
-    companyId
-  } = req.body;
-  const { id } = req.params;
+    name,
+    operatingCountries,
+  } = req.body
   try {
-    const salt = bcrypt.genSaltSync(bcryptSalt);
-    const hashedPassword = bcrypt.hashSync(password, salt);
-    const editedCompany = await Company.update(
-      {
-        username: username,
-        email: email,
-        password: hashedPassword,
-        imgUrl: imgUrl,
-        basedCountry: basedCountry,
-        about: about,
-        remainingDays: remainingDays,
-        role: role,
-        requestId: requestId,
-        companyId: companyId
-      },
-      { where: { id: id } }
-    );
-    res.status(200).json(editedUser);
+    const compCheck = await Company.findOne({ where: { name: name } });
+    if (compCheck) {
+      return res.status(422).json({ code: "Companyname-not-unique" });
+    }
+
+    const newCompany = await Company.create({
+      name,
+      operatingCountries
+    });
+
+    return res.json(newCompany);
   } catch (error) {
     next(error);
   }
 });
 
-// DELETE user action
+
+// UPDATE company 
+router.patch("/:id", async (req, res, next) => {
+  const {
+    name,
+    operatingCountries,
+  } = req.body;
+  const { id } = req.params;
+  try {
+    const rez = await Company.update(
+      {
+        name: name,
+        operatingCountries: operatingCountries
+      },
+      { where: { id: id } }
+    );
+    //res.status(200).json(editedCompany);
+
+    const editedCompany = await Company.findOne({ where: { id: req.params.id } })
+      .then(company => {
+        return company;
+      })
+      .catch(next);
+    res.status(200).json(editedCompany);
+
+  } catch (error) {
+    next(error);
+  }
+});
+
+// DELETE company action
 router.delete("/:id", async (req, res, next) => {
   const { id } = req.params;
   try {
     await Company.destroy({ where: { id: id } });
     const companies = await Company.findAll();
-    res.status(200).json(users);
+    res.status(200).json(companies);
   } catch (error) {
     next(error);
   }

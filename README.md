@@ -36,5 +36,154 @@ All Migration and Models generate by sequelize-cli
 **sequelize docs**
 [https://sequelize.org/v3/]
 
-Я туплю как обновить поле асоциаций для компании когда добавляю юзера.
-https://stackoverflow.com/questions/45845764/sequelize-typeerror-phone-setuser-is-not-a-function
+### Available endpoints
+
+**_ Auth _**
+
+Sign up \
+POST http://188.166.50.249/signup
+
+```
+{
+"username": "test",
+"email": "test@test.test",
+"password": "123123",
+"imgUrl":"",
+"basedCountry":"USA",
+"about":"",
+"remainingDays":123,
+"role":"employer",
+"requests":"",
+"companyId":1
+}
+```
+
+Login \
+POST http://188.166.50.249/login
+
+```
+{
+"username": "test",
+"password": "123123"
+}
+```
+
+LogOut \
+GET http://188.166.50.249/logout
+
+**_ USERS _**
+
+Get all users \
+GET http://188.166.50.249/users
+
+Get User by id \
+GET http://188.166.50.249/users/(id)
+
+Edit User \
+PATCH http://188.166.50.249/users/(id)
+
+```
+{
+"username": "aga",
+"email": "test@test12.test",
+"password": "123123",
+"imgUrl":"",
+"basedCountry":"USA",
+"about":"",
+"remainingDays":123,
+"role":"employer",
+"requests":"",
+"companyId":1
+}
+```
+
+Delete User \
+DELETE http://188.166.50.249/users/(id)
+
+**_ Companies _**
+
+Get all Companies \
+GET http://188.166.50.249/companies
+
+Get Company by id \
+GET http://188.166.50.249/companies/(id)
+
+Add Company \
+POST http://188.166.50.249/companies
+
+```
+{
+  "operatingCountries": [
+    "Spain"
+  ],
+  "name": "Super Puper comp"
+}
+```
+
+Edit Company \
+PATCH http://188.166.50.249/companies/(id)
+
+```
+{
+  "operatingCountries": [
+    "Spain",
+		"USA"
+  ],
+  "name": "Super Puper comp LTD"
+}
+```
+
+Delete Company \
+DELETE http://188.166.50.249/companies/(id)
+
+**Requests**
+
+Get all Requests \
+GET http://188.166.50.249/hollyday
+
+Get Request by id \
+GET http://188.166.50.249/hollyday/(id)
+
+Add Request \
+POST http://188.166.50.249/hollyday
+
+```
+{
+"initDate":"2021-02-13 17:56:37",
+"endDate":"2021-02-13 17:56:37",
+"type":"holidays",
+"status":"open",
+"title":"Lorem Ipsum",
+"description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+"documentUrl":"",
+"userId":"1",
+"companyId":"1"
+}
+```
+
+Edit Request \
+PATCH http://188.166.50.249/hollyday/(id)
+
+```
+{
+"initDate":"2021-02-13 17:50:37",
+"endDate":"2021-02-13 17:56:37",
+"type":"holidays",
+"status":"approved",
+"title":"Lorem Ipsum",
+"description":"Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+"documentUrl":"",
+"userId":"1",
+"companyId":"1"
+}
+```
+
+Delete Request \
+DELETE http://188.166.50.249/hollyday/(id)
+
+## TODO
+
+1. validation request
+2. req.session.currentUser , use to return data just for this company
+3. req.session.currentUser , use to validate user rights according to user type
+4. add seeds for **Request**
