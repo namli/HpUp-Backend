@@ -1,14 +1,17 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
-
+const app = express();
 const models = require('../models');
 const User = models.user;
 
 const router = express.Router();
 
+//const cors = require('cors');
+//app.use(cors());
+
 const checkIfLoggedIn = (req, res, next) => {
-    if (req.session.currentUser) {
+    if (req.session) {
         next();
     } else {
         res.status(401).json({ code: "unauthorized" });
