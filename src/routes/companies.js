@@ -8,7 +8,7 @@ const Company = models.company;
 const router = express.Router();
 
 const checkIfLoggedIn = (req, res, next) => {
-  if (req.session.currentUser) {
+  if (req.session) {
     next();
   } else {
     res.status(401).json({ code: "unauthorized" });
