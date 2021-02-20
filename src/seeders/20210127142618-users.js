@@ -15,7 +15,9 @@ module.exports = {
       companyId: 1,
       requestId: null,
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
+      firstName: faker.name.firstName(),
+      lastName: faker.name.lastName()
     }, {
       username: 'silvia',
       email: faker.internet.email(),
@@ -26,7 +28,9 @@ module.exports = {
       companyId: 1,
       requestId: null,
       createdAt: new Date(),
-      updatedAt: new Date()
+      updatedAt: new Date(),
+      firstName: faker.name.firstName(),
+      lastName: faker.name.lastName()
     }], {});
   },
 

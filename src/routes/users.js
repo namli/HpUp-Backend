@@ -4,6 +4,7 @@ const bcryptSalt = 10;
 const app = express();
 const models = require('../models');
 const User = models.user;
+const Request = models.request;
 
 const router = express.Router();
 
@@ -34,6 +35,15 @@ router.get("/:id", (req, res, next) => {
     User.findOne({ where: { id: req.params.id } })
         .then(user => {
             res.status(200).json(user);
+        })
+        .catch(next);
+});
+
+// shows specific user, still to be populated with requests and companies
+router.get("/:id/requests", (req, res, next) => {
+    Request.findAll({ where: { userId: req.params.id } })
+        .then(requests => {
+            res.status(200).json(requests);
         })
         .catch(next);
 });
