@@ -60,7 +60,9 @@ router.patch("/:id", async (req, res, next) => {
         remainingDays,
         role,
         requestId,
-        companyId
+        companyId,
+        firstName,
+        lastName
     } = req.body;
     const { id } = req.params;
     try {
@@ -77,7 +79,9 @@ router.patch("/:id", async (req, res, next) => {
                 remainingDays: remainingDays,
                 role: role,
                 requestId: requestId,
-                companyId: companyId
+                companyId: companyId,
+                firstName: firstName,
+                lastName: lastName
             },
             { where: { id: id } }
         );

@@ -22,7 +22,9 @@ router.post("/signup", async (req, res, next) => {
         remainingDays,
         role,
         requests,
-        companyId
+        companyId,
+        firstName,
+        lastName
     } = req.body
     try {
         const user = await User.findOne({ where: { username: username } });
@@ -41,7 +43,9 @@ router.post("/signup", async (req, res, next) => {
             remainingDays,
             role,
             requests,
-            companyId
+            companyId,
+            firstName,
+            lastName
         });
         // .then((user) => {
         //     Company.findOne({ where: { id: user.companyId } }).then((company) => {
