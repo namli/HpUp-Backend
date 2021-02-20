@@ -71,7 +71,7 @@ POST http://188.166.50.249/login
 LogOut \
 GET http://188.166.50.249/logout
 
-**_ USERS _**
+**_ User _**
 
 Get all users \
 GET http://188.166.50.249/users
@@ -99,6 +99,9 @@ PATCH http://188.166.50.249/users/(id)
 
 Delete User \
 DELETE http://188.166.50.249/users/(id)
+
+Get all request for User with ID \
+GET http://188.166.50.249/users/(id)/requests
 
 **_ Companies _**
 
