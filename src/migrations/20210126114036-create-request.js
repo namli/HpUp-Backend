@@ -8,13 +8,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      init_date: {
+      initDate: {
         type: Sequelize.DATE,
         allowNull: false
       },
-      end_date: {
+      endDate: {
         type: Sequelize.DATE,
-        allowNull: false
+        allowNull: true
       },
       type: {
         type: Sequelize.ENUM,
@@ -33,10 +33,10 @@ module.exports = {
       description: {
         type: Sequelize.STRING,
       },
-      document_url: {
+      documentUrl: {
         type: Sequelize.STRING,
       },
-      author: {
+      userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -44,11 +44,11 @@ module.exports = {
           key: 'id'
         },
       },
-      destination: {
+      companyId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'users',
+          model: 'companies',
           key: 'id'
         },
       },

@@ -28,12 +28,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
 
     },
-
-    operating_countries: {
+    operatingCountries: {
       type: DataTypes.STRING,
       allowNull: false,
       get() {
-        return this.getDataValue('operatingCountries').split(';')
+        return this.getDataValue('operatingCountries').split(';');
       },
       set(val) {
         this.setDataValue('operatingCountries', val.join(';'));
@@ -42,8 +41,7 @@ module.exports = (sequelize, DataTypes) => {
 
   }, {
     sequelize,
-    modelName: 'company',
-    underscored: true,
+    modelName: 'company'
   });
 
   return company;

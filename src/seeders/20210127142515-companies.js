@@ -11,14 +11,14 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    await queryInterface.bulkInsert('Companies', [{
+    await queryInterface.bulkInsert('companies', [{
       name: "My super company",
-      operating_countries: 'Spain;USA;France',
+      operatingCountries: 'Spain;USA;France',
       createdAt: new Date(),
       updatedAt: new Date()
     }, {
       name: "My super company 2",
-      operating_countries: 'Spain;USA;France',
+      operatingCountries: 'Spain;USA;France',
       createdAt: new Date(),
       updatedAt: new Date()
     }], {});
