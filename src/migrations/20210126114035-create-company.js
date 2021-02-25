@@ -12,17 +12,9 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      operating_countries: {
+      operatingCountries: {
         type: Sequelize.STRING,
         allowNull: false
-      },
-      users: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        references: {
-          model: 'users',
-          key: 'id'
-        },
       },
       createdAt: {
         allowNull: false,

@@ -1,14 +1,18 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
-
+const app = express();
 const models = require('../models');
 const User = models.user;
+const Request = models.request;
 
 const router = express.Router();
 
+//const cors = require('cors');
+//app.use(cors());
+
 const checkIfLoggedIn = (req, res, next) => {
-    if (req.session.currentUser) {
+    if (req.session) {
         next();
     } else {
         res.status(401).json({ code: "unauthorized" });
@@ -35,6 +39,15 @@ router.get("/:id", (req, res, next) => {
         .catch(next);
 });
 
+// shows specific user, still to be populated with requests and companies
+router.get("/:id/requests", (req, res, next) => {
+    Request.findAll({ where: { userId: req.params.id } })
+        .then(requests => {
+            res.status(200).json(requests);
+        })
+        .catch(next);
+});
+
 // UPDATE user POST action
 router.patch("/:id", async (req, res, next) => {
     const {
@@ -47,7 +60,9 @@ router.patch("/:id", async (req, res, next) => {
         remainingDays,
         role,
         requestId,
-        companyId
+        companyId,
+        firstName,
+        lastName
     } = req.body;
     const { id } = req.params;
     try {
@@ -64,7 +79,9 @@ router.patch("/:id", async (req, res, next) => {
                 remainingDays: remainingDays,
                 role: role,
                 requestId: requestId,
-                companyId: companyId
+                companyId: companyId,
+                firstName: firstName,
+                lastName: lastName
             },
             { where: { id: id } }
         );

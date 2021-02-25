@@ -11,14 +11,34 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      request.belongsTo(models.user)
+      request.belongsTo(models.company)
     }
   };
   request.init({
-    initDate: DataTypes.DATE
+    initDate: DataTypes.DATE,
+    endDate: DataTypes.DATE,
+    type:
+    {
+      type: DataTypes.ENUM,
+      values: ["absence", "holidays"],
+      allowNull: false
+    },
+    status:
+    {
+      type: DataTypes.ENUM,
+      values: ["approved", "open", "declined"],
+      allowNull: false
+    },
+    title: DataTypes.STRING,
+    description: DataTypes.STRING,
+    documentUrl: DataTypes.STRING,
+    userId: DataTypes.INTEGER,
+    companyId: DataTypes.INTEGER
+
   }, {
     sequelize,
     modelName: 'request',
-    underscored: true,
   });
   return request;
 };
